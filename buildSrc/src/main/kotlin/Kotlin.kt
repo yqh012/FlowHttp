@@ -12,7 +12,7 @@ object Kotlin {
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
     //协程版本
-    private const val coroutines_version = "1.4.2"
+    private const val coroutines_version = "1.4.3"
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
     const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     //协程官方框架扩展依赖包

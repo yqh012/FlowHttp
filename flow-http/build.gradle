@@ -45,4 +45,9 @@ dependencies {
     implementation(Android.lifecycle.viewModelKtx)
     implementation(Android.lifecycle.lifecycleRuntime)
     implementation(Android.lifecycle.viewModelSavestate)
+    implementation(Android.lifecycle.process)
+    implementation(ThirdParty.retrofit.retrofit)
+    implementation(ThirdParty.okhttp.okhttp)
+    implementation(ThirdParty.okhttp.okhttpLoggingInterceptor)
+    implementation(ThirdParty.retrofit.gson)
 }
