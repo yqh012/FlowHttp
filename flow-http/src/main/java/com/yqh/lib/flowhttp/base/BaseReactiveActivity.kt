@@ -7,13 +7,14 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.yqh.lib.flowhttp.viewmodel.IUIActionEventObserver
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 
 
 open class BaseReactiveActivity : AppCompatActivity(), IUIActionEventObserver {
     override val lLifecycleOwner: LifecycleOwner by lazy { this }
     override val lifecycleSupportScope: CoroutineScope = lifecycleScope
 
-    override fun showLoading() {
+    override fun showLoading(job:Job?) {
         Log.e("BaseReactiveActivity", "showLoading ... ")
     }
 

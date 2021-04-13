@@ -10,6 +10,7 @@ import com.yqh.lib.flowhttp.exception.ServerCodeBadException
 import com.yqh.lib.flowhttp.viewmodel.IUIActionEvent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -109,6 +110,11 @@ abstract class BaseRemoteSource<Api : Any>(
         if (callback == null) return
         when (exception) {
             is CancellationException -> {
+                /**
+                 * 因为 Flow 没有自己的取消api，所以在 flow 中不会收到 协程取消的事件
+                 * 只有在 Flow 所在的 父协程中，当父协程取消了之后，flow 会直接取消，不会发送此事件。
+                 * 目前暂时保留 取消的回调(方便切换 flow 切换到协程的业务)
+                 */
                 callback.onCancelled?.invoke()
             }
             else -> {
@@ -161,8 +167,8 @@ abstract class BaseRemoteSource<Api : Any>(
             else -> "请求过程中抛出异常，code : ${httpException?.errorCode} , message : ${httpException.errorMessage}"
         }
 
-    protected fun showLoading() {
-        actionEvent?.showLoading()
+    protected fun showLoading(job:Job?) {
+        actionEvent?.showLoading(job)
     }
 
     protected fun hideLoading() {

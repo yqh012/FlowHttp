@@ -35,7 +35,7 @@ abstract class RemoteSource<Api : Any>(
         val callback = if (callbackFun == null) null else RequestCallback<Response>().apply {
             callbackFun.invoke(this)
         }
-
+        val currentJob = coroutineContext[Job]
         flow {
             val response = api.invoke(getApiServer(baseUrl)).also {
                 if (!it.success) throw ServerCodeBadException(it)
@@ -44,7 +44,7 @@ abstract class RemoteSource<Api : Any>(
         }
             .flowOn(Dispatchers.IO)
             .onStart {
-                if (showLoading) showLoading()
+                if (showLoading) showLoading(currentJob)
                 callback?.onStart?.invoke()
             }
             .catch {

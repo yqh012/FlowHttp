@@ -1,8 +1,10 @@
 package com.yqh.lib.flowhttp.viewmodel
 
+import kotlinx.coroutines.Job
+
 sealed class ActionEvent {
 
-    object ShowLoading : ActionEvent()
+    class ShowLoading(val job: Job?) : ActionEvent()
 
     object HideLoading : ActionEvent()
 

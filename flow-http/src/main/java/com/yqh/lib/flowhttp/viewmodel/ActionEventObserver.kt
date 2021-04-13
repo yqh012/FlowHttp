@@ -2,10 +2,11 @@ package com.yqh.lib.flowhttp.viewmodel
 
 import androidx.lifecycle.*
 import com.yqh.lib.flowhttp.coroutine.ICoroutine
+import kotlinx.coroutines.Job
 
 interface IUIActionEvent : ICoroutine {
 
-    fun showLoading()
+    fun showLoading(job: Job?)
 
     fun hideLoading()
 
@@ -18,8 +19,8 @@ interface IUIActionEvent : ICoroutine {
 interface IViewModelActionEvent : IUIActionEvent {
     val actionEventState: MutableLiveData<ActionEvent>
 
-    override fun showLoading() {
-        actionEventState.value = ActionEvent.ShowLoading
+    override fun showLoading(job: Job?) {
+        actionEventState.value = ActionEvent.ShowLoading(job)
     }
 
     override fun hideLoading() {
@@ -74,7 +75,7 @@ interface IUIActionEventObserver : IUIActionEvent {
     fun <VM> generateActionEvent(viewModel: VM) where VM : ViewModel, VM : IViewModelActionEvent {
         viewModel.actionEventState.observe(lLifecycleOwner, Observer {
             when (it) {
-                is ActionEvent.ShowLoading -> this@IUIActionEventObserver.showLoading()
+                is ActionEvent.ShowLoading -> this@IUIActionEventObserver.showLoading(it.job)
                 is ActionEvent.HideLoading -> this@IUIActionEventObserver.hideLoading()
                 is ActionEvent.ShowToast -> {
                     if (it.msg.isNotBlank())

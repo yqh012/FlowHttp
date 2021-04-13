@@ -17,7 +17,6 @@ class TestViewModel : BaseViewModel() {
     fun getBannerList() {
         remoteDataSource.enqueueLoading({
             delay(3000)
-            var a = 3 / 0
             getBannerList()
         }) {
 
