@@ -57,17 +57,24 @@ object ThirdParty {
     }
 
     val autoSize = AutoSize
+
     object AutoSize {
         private const val autosize_version = "1.2.1"
         const val layoutAutosize = "me.jessyan:autosize:$autosize_version"
     }
 
-//    implementation("io.coil-kt:coil:1.1.1")
-
     val coil = Coil
+
     object Coil {
         private const val coil_version = "1.1.1"
         const val coil = "io.coil-kt:coil:${coil_version}"
+    }
+
+    val gson = Gson
+
+    object Gson {
+        private const val gson_version = "2.8.6"
+        const val gson = "com.google.code.gson:gson:$gson_version"
     }
 
 }

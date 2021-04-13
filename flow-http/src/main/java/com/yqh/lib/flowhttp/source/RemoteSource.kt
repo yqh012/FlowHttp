@@ -61,7 +61,7 @@ abstract class RemoteSource<Api : Any>(
 
                 withContext(NonCancellable) {
                     withContext(Dispatchers.IO) {
-                        callback?.onCompletion?.invoke()
+                        callback?.onSuccessIO?.invoke(response)
                     }
                 }
             }

@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
     implementation(Kotlin.kotlinStdlib)
     implementation(Android.coreKtx)
     implementation(Android.appcompat)

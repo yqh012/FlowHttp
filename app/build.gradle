@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -15,6 +16,7 @@ android {
         versionName(Version.versionName)
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -30,15 +32,27 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8
     }
+
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
     implementation(Android.constraintlayout)
 
     implementation project(path: ':flow-http')
 
+    implementation(ThirdParty.gson.gson)
     testImplementation(Junit.junit)
     androidTestImplementation(Junit.ext)
     androidTestImplementation(Junit.espresso)
+    implementation(ThirdParty.retrofit.retrofit)
+    implementation(ThirdParty.retrofit.gson)
+    implementation(Kotlin.coroutinesAndroid)
+    implementation(Kotlin.coroutinesCore)
+    implementation(Kotlin.coroutinesJdk)
+    implementation 'com.android.support:multidex:1.0.3'
 
 }

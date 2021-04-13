@@ -72,7 +72,7 @@ abstract class BaseRemoteSource<Api : Any>(
     /**
      * 子类自定义实现 Retrofit
      */
-    protected fun createRetrofit(baseUrl: String): Retrofit = createDefaultRetrofit(baseUrl)
+    protected open fun createRetrofit(baseUrl: String): Retrofit = createDefaultRetrofit(baseUrl)
 
     /**
      * 过滤 baseUrl 是否为空，若为空则使用默认的BaseUrl
@@ -138,7 +138,7 @@ abstract class BaseRemoteSource<Api : Any>(
     /**
      * 将网络请求过程中出现的异常反馈到外部，以便记录问题
      */
-    protected abstract fun exceptionRecord(exception: Throwable)
+    protected open fun exceptionRecord(exception: Throwable) {}
 
     /**
      * 用于由外部来控制当抛出异常时是否走 onFail 回调，
