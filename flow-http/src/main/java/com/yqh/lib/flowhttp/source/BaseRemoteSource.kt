@@ -1,5 +1,6 @@
 package com.yqh.lib.flowhttp.source
 
+import android.util.Log
 import android.util.LruCache
 import com.yqh.lib.flowhttp.callback.BaseRequestCallback
 import com.yqh.lib.flowhttp.coroutine.ICoroutine
@@ -19,8 +20,8 @@ import java.util.concurrent.CancellationException
 import java.util.concurrent.TimeUnit
 
 abstract class BaseRemoteSource<Api : Any>(
-    protected val actionEvent: IUIActionEvent?,
-    protected val apiServiceClass: Class<Api>
+    private val actionEvent: IUIActionEvent?,
+    private val apiServiceClass: Class<Api>
 ) : ICoroutine {
     companion object {
         /**
@@ -168,5 +169,7 @@ abstract class BaseRemoteSource<Api : Any>(
         actionEvent?.hideLoading()
     }
 
-    abstract fun showToast(msg: String)
+    private fun showToast(msg: String) {
+        actionEvent?.showToast(msg)
+    }
 }

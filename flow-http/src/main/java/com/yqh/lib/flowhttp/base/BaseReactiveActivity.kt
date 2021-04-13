@@ -28,7 +28,7 @@ open class BaseReactiveActivity : AppCompatActivity(), IUIActionEventObserver {
         }
     }
 
-    override fun finish() {
+    override fun finishView() {
         Log.e("BaseReactiveActivity", "finish ... ")
         finish()
     }

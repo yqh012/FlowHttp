@@ -30,10 +30,6 @@ class SelfRemoteDateSource(uiActionEvent: IUIActionEvent) :
     override val baseUrl: String
         get() = Config.BASE_URL
 
-    override fun showToast(msg: String) {
-
-    }
-
     override fun createRetrofit(baseUrl: String): Retrofit {
         return Retrofit.Builder()
             .client(okhttpClient)

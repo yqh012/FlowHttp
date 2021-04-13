@@ -11,7 +11,7 @@ interface IUIActionEvent : ICoroutine {
 
     fun showToast(msg: String)
 
-    fun finish()
+    fun finishView()
 
 }
 
@@ -30,7 +30,7 @@ interface IViewModelActionEvent : IUIActionEvent {
         actionEventState.value = ActionEvent.ShowToast(msg)
     }
 
-    override fun finish() {
+    override fun finishView() {
         actionEventState.value = ActionEvent.Finish
     }
 }
@@ -80,7 +80,7 @@ interface IUIActionEventObserver : IUIActionEvent {
                     if (it.msg.isNotBlank())
                         this@IUIActionEventObserver.showToast(it.msg)
                 }
-                is ActionEvent.Finish -> this@IUIActionEventObserver.finish()
+                is ActionEvent.Finish -> this@IUIActionEventObserver.finishView()
             }
         })
     }
