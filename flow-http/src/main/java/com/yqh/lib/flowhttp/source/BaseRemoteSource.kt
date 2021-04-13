@@ -1,6 +1,5 @@
 package com.yqh.lib.flowhttp.source
 
-import android.util.Log
 import android.util.LruCache
 import com.yqh.lib.flowhttp.callback.BaseRequestCallback
 import com.yqh.lib.flowhttp.coroutine.ICoroutine
