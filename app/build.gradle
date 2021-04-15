@@ -42,7 +42,8 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     implementation(Android.constraintlayout)
 
-    implementation project(path: ':flow-http')
+//    implementation project(path: ':flow-http')
+    implementation 'com.github.yqh012:FlowHttp:v1.0.0'
 
     implementation(ThirdParty.gson.gson)
     testImplementation(Junit.junit)
