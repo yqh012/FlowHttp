@@ -3,6 +3,7 @@ package com.yqh.flowhttp
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.yqh.flowhttp.base.BaseViewModel
+import com.yqh.lib.flowhttp.bean.IHttpWrapBean
 import kotlinx.coroutines.delay
 
 class TestViewModel : BaseViewModel() {
@@ -15,6 +16,37 @@ class TestViewModel : BaseViewModel() {
     }
 
     fun getBannerList() {
+
+//        remoteDataSource.enqueueLoadings(
+//            callback = {
+//                onSuccess {
+//                    (it as? List<*>)?.let {
+//                        contentList ->
+//
+//                        log(contentList[0].toString())
+//                        log(contentList[1].toString())
+//                    }
+//                }
+//
+//                onCompletion {
+//                    log("onCompletion... ")
+//                }
+//                onCancelled {
+//                    log("onCancelled... ")
+//                }
+//
+//                onFailedToast { true }
+//                onFailed {
+//                    log("filed : ${it.message}")
+//                }
+//
+//            }, apis = arrayOf(
+//                { getBannerList() },
+//                { getChatList() }
+//            )
+//        )
+
+
         remoteDataSource.enqueueLoading({
             delay(3000)
             getBannerList()
