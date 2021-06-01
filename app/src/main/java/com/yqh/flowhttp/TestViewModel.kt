@@ -17,6 +17,9 @@ class TestViewModel : BaseViewModel() {
 
     fun getBannerList() {
 
+//        /**
+//         * 多个接口同步请求
+//         */
 //        remoteDataSource.enqueueLoadings(
 //            callback = {
 //                onSuccess {
