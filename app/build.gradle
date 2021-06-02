@@ -49,11 +49,11 @@ dependencies {
     testImplementation(Junit.junit)
     androidTestImplementation(Junit.ext)
     androidTestImplementation(Junit.espresso)
-    implementation(ThirdParty.retrofit.retrofit)
-    implementation(ThirdParty.retrofit.gson)
-    implementation(Kotlin.coroutinesAndroid)
-    implementation(Kotlin.coroutinesCore)
-    implementation(Kotlin.coroutinesJdk)
+//    implementation(ThirdParty.retrofit.retrofit)
+//    implementation(ThirdParty.retrofit.gson)
+//    implementation(Kotlin.coroutinesAndroid)
+//    implementation(Kotlin.coroutinesCore)
+//    implementation(Kotlin.coroutinesJdk)
     implementation 'com.android.support:multidex:1.0.3'
 
 }

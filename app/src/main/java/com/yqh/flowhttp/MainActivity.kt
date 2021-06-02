@@ -2,9 +2,7 @@ package com.yqh.flowhttp
 
 import android.os.Bundle
 import com.yqh.flowhttp.base.BaseActivity
-import com.yqh.lib.flowhttp.viewmodel.ActionEvent
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.Job
 
 class MainActivity : BaseActivity() {
 
