@@ -1,6 +1,7 @@
 package com.yqh.lib.flowhttp.source
 
 import com.yqh.lib.flowhttp.bean.IHttpWrapBean
+import com.yqh.lib.flowhttp.cache.CacheStrategy
 import com.yqh.lib.flowhttp.callback.RequestCallback
 import com.yqh.lib.flowhttp.exception.ServerCodeBadException
 import com.yqh.lib.flowhttp.viewmodel.IUIActionEvent
@@ -19,7 +20,12 @@ abstract class RemoteSource<Api : Any>(
         api: suspend Api.() -> IHttpWrapBean<Response>,
         baseUrl: String = "",
         callback: (RequestCallback<Response>.() -> Unit)? = null
-    ): Job = enqueue(api = api, showLoading = true, baseUrl = baseUrl, callbackFun = callback)
+    ): Job = enqueue(
+        api = api,
+        showLoading = true,
+        baseUrl = baseUrl,
+        callbackFun = callback
+    )
 
 
     /**
@@ -28,7 +34,7 @@ abstract class RemoteSource<Api : Any>(
     fun <Response> enqueue(
         api: suspend Api.() -> IHttpWrapBean<Response>,
         showLoading: Boolean = false,
-        baseUrl: String,
+        baseUrl: String = "",
         callbackFun: (RequestCallback<Response>.() -> Unit)? = null
     ): Job = lifecycleSupportScope.launch(Dispatchers.Main) {
         val callback = if (callbackFun == null) null else RequestCallback<Response>().apply {

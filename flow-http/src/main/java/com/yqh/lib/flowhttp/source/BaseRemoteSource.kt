@@ -166,7 +166,7 @@ abstract class BaseRemoteSource<Api : Any>(
             else -> "请求过程中抛出异常，code : ${httpException?.errorCode} , message : ${httpException.errorMessage}"
         }
 
-    protected fun showLoading(job:Job?) {
+    protected fun showLoading(job: Job?) {
         actionEvent?.showLoading(job)
     }
 

@@ -39,6 +39,8 @@ class SelfRemoteDateSource(uiActionEvent: IUIActionEvent) :
     }
 
     override fun exceptionRecord(exception: Throwable) {
-
+        /**
+         * 网络请求的异常，统一在此处都可以获取得到
+         */
     }
 }
