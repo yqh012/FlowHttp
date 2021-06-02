@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-kapt'
 }
 
 android {
@@ -40,15 +39,28 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8
     }
+
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {
-    api(ThirdParty.okhttp.okhttp)
-    api(ThirdParty.okhttp.okhttpLoggingInterceptor)
-    api(ThirdParty.retrofit.retrofit)
-    api(ThirdParty.retrofit.gson)
-    kapt(Android.room.roomCompiler)
-
-    api project(path: ':common')
-
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api(Kotlin.kotlinStdlib)
+    api(Android.coreKtx)
+    api(Android.appcompat)
+    api(Android.material)
+    api(Kotlin.kotlinReflect)
+    api(Kotlin.coroutinesAndroid)
+    api(Kotlin.coroutinesCore)
+    api(Kotlin.coroutinesJdk)
+    api(Android.lifecycle.liveDataKtx)
+    api(Android.lifecycle.viewModelKtx)
+    api(Android.lifecycle.lifecycleRuntime)
+    api(Android.lifecycle.viewModelSavestate)
+    api(Android.lifecycle.process)
+    api(Android.room.roomRuntime)
+    api(Android.room.roomKtx)
+    api(ThirdParty.gson.gson)
 }

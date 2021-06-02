@@ -45,15 +45,10 @@ dependencies {
     implementation project(path: ':flow-http')
 //    implementation 'com.github.yqh012:FlowHttp:v1.0.0'
 
-    implementation(ThirdParty.gson.gson)
+//    implementation(ThirdParty.gson.gson)
     testImplementation(Junit.junit)
     androidTestImplementation(Junit.ext)
     androidTestImplementation(Junit.espresso)
-//    implementation(ThirdParty.retrofit.retrofit)
-//    implementation(ThirdParty.retrofit.gson)
-//    implementation(Kotlin.coroutinesAndroid)
-//    implementation(Kotlin.coroutinesCore)
-//    implementation(Kotlin.coroutinesJdk)
-    implementation 'com.android.support:multidex:1.0.3'
 
+    implementation 'com.android.support:multidex:1.0.3'
 }
