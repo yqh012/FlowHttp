@@ -3,7 +3,7 @@ package com.yqh.lib.flowhttp.dao
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.yqh.common.utils.ApplicationUtil
+import com.yqh.common.utils.AppUtil
 import com.yqh.lib.flowhttp.bean.Cache
 
 @Database(entities = [Cache::class], version = 1)
@@ -12,7 +12,7 @@ abstract class CacheDataBase : RoomDatabase() {
     companion object {
         val database: CacheDataBase by lazy {
             Room.databaseBuilder(
-                ApplicationUtil.application,
+                AppUtil.application,
                 CacheDataBase::class.java,
                 "ppjoke_cache"
             )

@@ -46,8 +46,7 @@ abstract class RemoteSource<Api : Any>(
                 if (!it.success) throw ServerCodeBadException(it)
             }
             emit(response.data)
-        }
-            .flowOn(Dispatchers.IO)
+        }.flowOn(Dispatchers.IO)
             .onStart {
                 if (showLoading) showLoading(currentJob)
                 callback?.onStart?.invoke()
